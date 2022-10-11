@@ -1,3 +1,4 @@
+from asyncio.log import logger
 import json
 import urllib.request
 
@@ -18,7 +19,7 @@ def lambda_handler(event, context):
             ]
         }
         
-        req = ullib.request.Request(url, data=json.dumps(body).encode('utf-8'), method='POST', headers=headers)
+        req = urllib.request.Request(url, data=json.dumps(body).encode('utf-8'), method='POST', headers=headers)
         with urllib.request.urlopen(req) as res:
             logger.info(res.read().decode("utf-8"))
             
